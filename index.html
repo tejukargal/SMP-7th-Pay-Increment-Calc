@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pay Commission Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navigation">
+        <div class="nav-container">
+            <div class="nav-title">
+                <div class="nav-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1" />
+                    </svg>
+                </div>
+                <span>7th Pay Commission</span>
+            </div>
+            <div class="nav-tabs">
+                <button class="nav-tab active" onclick="showPage('calculator')">Increment Calculator</button>
+                <button class="nav-tab" onclick="showPage('payscales')">Pay Scales</button>
+                <button class="nav-tab" onclick="showPage('orders')">DA & HRA Orders</button>
+                <button class="nav-tab" onclick="showPage('aictecalculator')">AICTE Pay Scale</button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="app-container">
+        <!-- Page 1: Increment Calculator -->
+        <div id="calculatorPage" class="page active">
+            <div class="container">
+                <div class="card">
+                    <button type="button" class="dismiss" onclick="resetForm()">×</button>
+                    
+                    <div class="header">
+                        <div class="image">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1" />
+                            </svg>
+                        </div>
+                        <div class="content">
+                            <div class="title">Salary Increment Calculator</div>
+                            <div class="message">Calculate your next annual increments</div>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <div class="input-group">
+                            <label for="currentBasic">Current Basic Salary</label>
+                            <input type="number" id="currentBasic" placeholder="Enter your current basic salary" min="0">
+                        </div>
+                        
+                        <div class="input-group">
+                            <label for="incrementMonth">Increment Month</label>
+                            <select id="incrementMonth">
+                                <option value="january">January</option>
+                                <option value="july">July</option>
+                            </select>
+                        </div>
+                        
+                        <div class="input-group">
+                            <label for="currentYear">Current Year</label>
+                            <input type="number" id="currentYear" min="2020" max="2030" value="2024">
+                        </div>
+                    </div>
+
+                    <div class="actions">
+                        <button class="history" onclick="calculateIncrements()">Calculate Next Increments</button>
+                        <button class="track" onclick="resetForm()">Reset</button>
+                    </div>
+                </div>
+
+                <div id="resultsContainer" class="results-container" style="display: none;">
+                    <div class="card results-card">
+                        <div class="header">
+                            <div class="image">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                            </div>
+                            <div class="content">
+                                <div class="title">Your Next 10 Increments</div>
+                                <div class="message">Based on 7th Pay Commission</div>
+                            </div>
+                        </div>
+
+                        <div class="results-content">
+                            <div class="table-container">
+                                <table id="incrementTable">
+                                    <thead>
+                                        <tr>
+                                            <th>Year</th>
+                                            <th>Month</th>
+                                            <th>Current Basic</th>
+                                            <th>Increment</th>
+                                            <th>New Basic</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="incrementTableBody">
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Page 2: Pay Scales -->
+        <div id="payscalesPage" class="page">
+            <div class="container">
+                <div class="card results-card">
+                    <div class="header">
+                        <div class="image">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17V7m0 10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h2a2 2 0 012 2m0 10a2 2 0 002 2h2a2 2 0 002-2M9 7a2 2 0 012-2h2a2 2 0 012 2m0 10V7m0 10a2 2 0 002 2h2a2 2 0 002-2V7a2 2 0 00-2-2H13a2 2 0 00-2 2" />
+                            </svg>
+                        </div>
+                        <div class="content">
+                            <div class="title">7th Pay Commission Scales</div>
+                            <div class="message">Master scale and all 25 pay scales</div>
+                        </div>
+                    </div>
+
+                    <div class="pay-scales-section">
+                        <div class="master-scale-section">
+                            <h3>Master Pay Scale (7th Pay Commission)</h3>
+                            <div class="master-scale-text" id="masterScaleTextPage2">
+                            </div>
+                        </div>
+                        
+                        <div class="pay-scales-container">
+                            <h3>Pay Scales (1-25)</h3>
+                            <div class="pay-scales-grid" id="payScalesGridPage2">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Page 3: DA & HRA Orders -->
+        <div id="ordersPage" class="page">
+            <div class="container">
+                <div class="card results-card">
+                    <div class="header">
+                        <div class="image">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                            </svg>
+                        </div>
+                        <div class="content">
+                            <div class="title">DA & HRA Orders</div>
+                            <div class="message">Government orders and notifications</div>
+                        </div>
+                    </div>
+
+                    <div class="orders-section">
+                        <div class="orders-container">
+                            <h3>Dearness Allowance (DA) Orders</h3>
+                            <div class="orders-grid">
+                                <div class="order-item">
+                                    <h4>Current DA Rate (7th Pay Commission)</h4>
+                                    <p><strong>12.25%</strong> of Basic Pay</p>
+                                    <p class="order-date">Effective from: January 1, 2025</p>
+                                    <p class="order-note">Order: FD 8 SRP 2025 Dt.07-05-2025</p>
+                                </div>
+                                <div class="order-item">
+                                    <h4>Recent DA Rates (7th Pay Commission)</h4>
+                                    <div class="da-history">
+                                        <p><strong>Jan 2025:</strong> 12.25% (FD 8 SRP 2025 Dt.07-05-2025)</p>
+                                        <p><strong>Aug 2024:</strong> 10.75% (Effect from 01.07.2024) (FD 43 SRP 2024 Dt.27-11-2024)</p>
+                                        <p><strong>Aug 2024:</strong> 8.5% (New DA as Per 7th Pay)</p>
+                                        <p><strong>Jul 2024:</strong> 45.25% (Limited to Jul-24 only) (FD 43 SRP(I) 2024 Dt.28-11-2024)</p>
+                                        <p><strong>Jan 2024:</strong> 42.5% (FD 18 SRP 2024 Dt.12-03-2024)</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="da-full-history">
+                                <h4>Complete DA History (2003-2025)</h4>
+                                <div class="table-wrapper">
+                                    <table class="da-history-table">
+                                        <thead>
+                                            <tr>
+                                                <th>Effective Date</th>
+                                                <th>Previous DA</th>
+                                                <th>New DA</th>
+                                                <th>Increase</th>
+                                                <th>GO Number and Date</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="daHistoryTableBody">
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                            <h3>House Rent Allowance (HRA) Orders</h3>
+                            <div class="orders-grid">
+                                <div class="order-item">
+                                    <h4>HRA Rates by City Classification</h4>
+                                    <div class="hra-rates">
+                                        <p><strong>X Class Cities:</strong> 24% of Basic Pay</p>
+                                        <p><strong>Y Class Cities:</strong> 16% of Basic Pay</p>
+                                        <p><strong>Z Class Cities:</strong> 8% of Basic Pay</p>
+                                    </div>
+                                </div>
+                                <div class="order-item">
+                                    <h4>Current HRA Rate</h4>
+                                    <p><strong>7.5%</strong> of Basic Pay</p>
+                                    <p class="order-date">Standard rate for calculations</p>
+                                    <p class="order-note">Note: Actual HRA depends on city classification</p>
+                                </div>
+                            </div>
+
+                            <h3>Important Government Orders</h3>
+                            <div class="orders-grid">
+                                <div class="order-item">
+                                    <h4>7th Pay Commission Implementation</h4>
+                                    <p>Effective from: 1st January 2016</p>
+                                    <p>Fitment Factor: 2.57</p>
+                                    <p>Minimum Pay: ₹18,000</p>
+                                </div>
+                                <div class="order-item">
+                                    <h4>Annual Increment</h4>
+                                    <p>Date: 1st January / 1st July</p>
+                                    <p>Rate: One increment in the pay matrix</p>
+                                    <p>Based on date of joining/promotion</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Page 4: AICTE Pay Scale Calculator -->
+        <div id="aictecalculatorPage" class="page">
+            <div class="container">
+                <!-- Calculator Input Card -->
+                <div class="card">
+                    <button type="button" class="dismiss" onclick="resetAICTEForm()">×</button>
+
+                    <div class="header">
+                        <div class="image">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222" />
+                            </svg>
+                        </div>
+                        <div class="content">
+                            <div class="title">AICTE Pay Scale Calculator</div>
+                            <div class="message">7th CPC – Govt / Aided Polytechnics</div>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <div class="input-group">
+                            <label for="aicteLevel">Academic Level / Designation</label>
+                            <select id="aicteLevel" onchange="resetAICTEResults()">
+                                <option value="9A">Level 9A – Lecturer (AGP 5400) | ₹56,100 – ₹1,82,400</option>
+                                <option value="13A1">Level 13A.1 – HOD / Principal (AGP 9000) | ₹1,31,400 – ₹2,04,700</option>
+                            </select>
+                        </div>
+
+                        <div class="input-group">
+                            <label for="aicteCurrentBasic">Current Basic Salary (₹)</label>
+                            <input type="number" id="aicteCurrentBasic" placeholder="Enter your current basic salary" min="0">
+                        </div>
+
+                        <div class="input-group">
+                            <label for="aicteIncrementMonth">Increment Month</label>
+                            <select id="aicteIncrementMonth">
+                                <option value="january">January</option>
+                                <option value="july">July</option>
+                            </select>
+                        </div>
+
+                        <div class="input-group">
+                            <label for="aicteCurrentYear">Current Year</label>
+                            <input type="number" id="aicteCurrentYear" min="2020" max="2030" value="2024">
+                        </div>
+                    </div>
+
+                    <div class="actions">
+                        <button class="history" onclick="calculateAICTEIncrements()">Calculate Next Increments</button>
+                        <button class="track" onclick="resetAICTEForm()">Reset</button>
+                    </div>
+                </div>
+
+                <!-- Results Card -->
+                <div id="aicteResultsContainer" class="results-container" style="display: none;">
+                    <div class="card results-card">
+                        <div class="header">
+                            <div class="image">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                            </div>
+                            <div class="content">
+                                <div class="title">Your Next 10 Increments</div>
+                                <div class="message" id="aicteLevelBadge">Based on AICTE 7th Pay Commission</div>
+                            </div>
+                        </div>
+
+                        <div class="results-content">
+                            <div class="table-container">
+                                <table id="aicteIncrementTable">
+                                    <thead>
+                                        <tr>
+                                            <th>Year</th>
+                                            <th>Month</th>
+                                            <th>Current Basic</th>
+                                            <th>Increment</th>
+                                            <th>New Basic</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="aicteIncrementTableBody"></tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pay Matrix Display Card -->
+                <div class="card results-card">
+                    <div class="header">
+                        <div class="image">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17V7m0 10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h2a2 2 0 012 2m0 10a2 2 0 002 2h2a2 2 0 002-2M9 7a2 2 0 012-2h2a2 2 0 012 2m0 10V7m0 10a2 2 0 002 2h2a2 2 0 002-2V7a2 2 0 00-2-2H13a2 2 0 00-2 2" />
+                            </svg>
+                        </div>
+                        <div class="content">
+                            <div class="title">AICTE Pay Matrix</div>
+                            <div class="message">7th CPC Pay Cell Progression – Diploma Institutions</div>
+                        </div>
+                    </div>
+
+                    <div class="pay-scales-section">
+                        <div class="master-scale-section">
+                            <h3>Level 9A – Lecturer (AGP 5400)</h3>
+                            <p class="aicte-scale-meta">Range: ₹56,100 – ₹1,82,400 &nbsp;|&nbsp; 40 cells &nbsp;|&nbsp; ~3% annual increment</p>
+                            <div class="master-scale-text aicte-scale-text" id="aicteScale9A"></div>
+                        </div>
+
+                        <div class="master-scale-section" style="margin-top: 1.5rem;">
+                            <h3>Level 13A.1 – HOD / Principal (AGP 9000)</h3>
+                            <p class="aicte-scale-meta">Range: ₹1,31,400 – ₹2,04,700 &nbsp;|&nbsp; 16 cells &nbsp;|&nbsp; ~3% annual increment</p>
+                            <div class="master-scale-text aicte-scale-text" id="aicteScale13A1"></div>
+                        </div>
+
+                        <div class="aicte-info-box">
+                            <p><strong>Designation Mapping:</strong> Lecturer → Level 9A &nbsp;|&nbsp; HOD / Principal → Level 13A.1</p>
+                            <p><strong>Pay Fixation:</strong> Old Basic × 2.57 (fitment factor), then fix at next cell in respective level.</p>
+                            <p><strong>Increment Rule:</strong> Annual increment = one cell progression in the pay matrix (~3% of basic).</p>
+                            <p><strong>Increment Date:</strong> 1 January or 1 July depending on date of joining / promotion.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
