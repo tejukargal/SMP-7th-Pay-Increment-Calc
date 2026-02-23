@@ -372,7 +372,8 @@ const daRatesData = [
     { date: '01-07-2024', prevPercentage: '42.5', percentage: '45.25%', increase: '2.75% (Limited to Jul-24 only)', order: 'FD 43 SRP(I) 2024 Dt.28-11-2024' },
     { date: '01-08-2024', prevPercentage: '42.5% (Merged for 7th Pay)', percentage: '8.5%', increase: '8.5%', order: 'New DA as Per 7th Pay' },
     { date: '01-08-2024', prevPercentage: '8.5%', percentage: '10.75% (Effect from 01.07.2024)', increase: '2.25%', order: 'FD 43 SRP 2024 Dt.27-11-2024' },
-    { date: '01-01-2025', prevPercentage: '10.75%', percentage: '12.25% (Effect from 01.01.2025)', increase: '1.5%', order: 'FD 8 SRP 2025 Dt.07-05-2025' }
+    { date: '01-01-2025', prevPercentage: '10.75%', percentage: '12.25% (Effect from 01.01.2025)', increase: '1.5%', order: 'FD 8 SRP 2025 Dt.07-05-2025' },
+    { date: '01-07-2025', prevPercentage: '12.25%', percentage: '14.25%', increase: '2%', order: 'FD 18 SRP 2025 Dt.15-10-2025' }
 ];
 
 function loadDAHistory() {
