@@ -304,15 +304,15 @@ function showPage(pageId) {
 function loadPayScalesPage() {
     const masterScaleTextPage2 = document.getElementById('masterScaleTextPage2');
     const payScalesGridPage2 = document.getElementById('payScalesGridPage2');
-    
+
     // Clear existing content
     masterScaleTextPage2.innerHTML = '';
     payScalesGridPage2.innerHTML = '';
-    
+
     // Load master scale
     const masterScale = generateMasterScale();
     masterScaleTextPage2.textContent = masterScale;
-    
+
     // Load pay scales
     const payScales = generatePayScales();
     payScales.forEach((payScale, index) => {
@@ -320,6 +320,22 @@ function loadPayScalesPage() {
         scaleItem.className = 'pay-scale-item';
         scaleItem.innerHTML = `<strong>Scale ${index + 1}:</strong><br>${payScale.scale}`;
         payScalesGridPage2.appendChild(scaleItem);
+    });
+}
+
+function loadStatePayMatrixPage1() {
+    const masterScaleEl = document.getElementById('masterScaleTextPage1');
+    const payScalesGridEl = document.getElementById('payScalesGridPage1');
+    if (!masterScaleEl || !payScalesGridEl) return;
+
+    masterScaleEl.textContent = generateMasterScale();
+
+    const payScales = generatePayScales();
+    payScales.forEach((payScale, index) => {
+        const scaleItem = document.createElement('div');
+        scaleItem.className = 'pay-scale-item';
+        scaleItem.innerHTML = `<strong>Scale ${index + 1}:</strong><br>${payScale.scale}`;
+        payScalesGridEl.appendChild(scaleItem);
     });
 }
 
@@ -405,7 +421,8 @@ window.addEventListener('load', function() {
     document.getElementById('currentYear').value = new Date().getFullYear();
     document.getElementById('currentBasic').focus();
 
-    // Load pay scales page data on initial load
+    // Load pay scales for Page 1 (below calculator) and Page 2
+    loadStatePayMatrixPage1();
     loadPayScalesPage();
 
     // Load DA history when page loads
