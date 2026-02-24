@@ -291,6 +291,8 @@ body {
 .table-container {
     max-height: 300px;
     overflow-y: auto;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
     border: 1px solid #e5e7eb;
     border-radius: 0.375rem;
 }
@@ -524,6 +526,8 @@ table tbody tr:hover {
 .table-wrapper {
     max-height: 400px;
     overflow-y: auto;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
     border: 1px solid #e5e7eb;
     border-radius: 0.5rem;
     background-color: #fff;
@@ -624,36 +628,149 @@ table tbody tr:hover {
 }
 
 @media (max-width: 768px) {
-    .container {
-        padding: 10px;
+    /* Navigation: stack title above tabs */
+    .nav-container {
+        flex-direction: column;
+        height: auto;
+        padding: 12px 16px;
+        gap: 10px;
+        align-items: flex-start;
     }
-    
+
+    .nav-title {
+        font-size: 1.1rem;
+    }
+
+    /* Make tabs scroll horizontally instead of overflowing */
+    .nav-tabs {
+        width: 100%;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        flex-wrap: nowrap;
+        padding: 4px;
+    }
+
+    .nav-tabs::-webkit-scrollbar {
+        display: none;
+    }
+
+    .nav-tab {
+        padding: 8px 14px;
+        font-size: 0.8rem;
+        flex-shrink: 0;
+    }
+
+    /* App container */
+    .app-container {
+        padding: 12px 10px;
+    }
+
+    .container {
+        padding: 0;
+        gap: 16px;
+    }
+
     .card {
         max-width: 100%;
     }
-    
+
+    /* Tables */
     table {
         font-size: 0.75rem;
     }
-    
+
     table th,
     table td {
         padding: 0.5rem;
     }
-    
+
+    /* Pay scales */
     .pay-scales-grid {
         grid-template-columns: 1fr;
         gap: 0.75rem;
     }
-    
+
     .pay-scale-item {
         min-width: unset;
         font-size: 0.8rem;
     }
-    
+
     .master-scale-text {
         font-size: 0.75rem;
         white-space: pre-wrap;
         word-break: break-word;
+    }
+
+    /* Orders grid: stack to single column */
+    .orders-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* AICTE info box: allow text to wrap */
+    .aicte-info-box p {
+        word-break: break-word;
+    }
+
+    .aicte-scale-meta {
+        word-break: break-word;
+    }
+}
+
+@media (max-width: 480px) {
+    .nav-title {
+        font-size: 1rem;
+    }
+
+    .nav-tab {
+        padding: 7px 10px;
+        font-size: 0.75rem;
+    }
+
+    .app-container {
+        padding: 8px 8px;
+    }
+
+    .title {
+        font-size: 0.95rem;
+    }
+
+    .message {
+        font-size: 0.8rem;
+    }
+
+    .image {
+        width: 2.5rem;
+        height: 2.5rem;
+    }
+
+    .image svg {
+        width: 1.6rem;
+        height: 1.6rem;
+    }
+
+    table {
+        font-size: 0.7rem;
+    }
+
+    table th,
+    table td {
+        padding: 0.4rem 0.35rem;
+    }
+
+    .order-item p {
+        font-size: 0.82rem;
+    }
+
+    .aicte-info-box p {
+        font-size: 0.78rem;
+    }
+
+    .da-history-table {
+        font-size: 0.7rem;
+    }
+
+    .pay-scales-section h3 {
+        font-size: 1rem;
     }
 }
