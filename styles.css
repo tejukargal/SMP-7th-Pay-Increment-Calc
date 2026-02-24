@@ -339,8 +339,7 @@ body {
     color: #0c4a6e;
     height: auto;
     white-space: pre-line;
-    overflow: visible;
-    max-height: 100px;
+    overflow: hidden;
 }
 
 .pay-scales-container {
